@@ -17,7 +17,6 @@ public class App
     public static void main( String[] args )
     {
         ListaEetakemon milista = new ListaEetakemon();
-        int generatedid = 0;
 
         Scanner sc = new Scanner(System.in);
         int option = 99;
@@ -41,9 +40,7 @@ public class App
                     nuevo.name = sc.nextLine();
                     System.out.println("Introduce el nivel del Eetakemon: ");
                     nuevo.level = Integer.parseInt(sc.nextLine());
-                    nuevo.setId(generatedid);
                     milista.addEetakemon(nuevo);
-                    generatedid++;
                     break;
                 case 2:
                     System.out.println("¿Que identificador quieres borrar?");
