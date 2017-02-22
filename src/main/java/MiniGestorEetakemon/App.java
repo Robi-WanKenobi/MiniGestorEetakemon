@@ -23,11 +23,11 @@ public class App
 
         while (option != 0) {
 
-            System.out.println("1. Añadir Eetakemon");
+            System.out.println("\n1. Añadir Eetakemon");
             System.out.println("2. Borrar Eetakemon");
             System.out.println("3. Mostrar todos los Eetakemon");
             System.out.println("4. Buscar Eetakemon");
-            System.out.println("5. Buscar Eetakemon por aproximación");
+            System.out.println("5. Buscar Eetakemon por aproximación \n");
             System.out.print("Seleccione una opción indicando el número: ");
             
             option = Integer.parseInt(sc.nextLine());
@@ -36,14 +36,14 @@ public class App
             switch (option) {
                 case 1:
                     Eetakemon nuevo = new Eetakemon();
-                    System.out.println("Introduce el nombre del Eetakemon: ");
+                    System.out.print("Introduce el nombre del Eetakemon: ");
                     nuevo.name = sc.nextLine();
-                    System.out.println("Introduce el nivel del Eetakemon: ");
+                    System.out.print("Introduce el nivel del Eetakemon: ");
                     nuevo.level = Integer.parseInt(sc.nextLine());
                     milista.addEetakemon(nuevo);
                     break;
                 case 2:
-                    System.out.println("¿Que identificador quieres borrar?");
+                    System.out.print("¿Que identificador quieres borrar?");
                     int delId = Integer.parseInt(sc.nextLine());
                     boolean deleted = milista.delEetakemon(delId);
 
@@ -69,7 +69,7 @@ public class App
                     }
                     break;
                 case 4:
-                    System.out.println("Introduce el nombre del Eetakemon: ");
+                    System.out.print("Introduce el nombre del Eetakemon: ");
                     String nombre = sc.nextLine();
                     List<Eetakemon> searched = milista.searchByName(nombre);
 
@@ -84,7 +84,7 @@ public class App
                     }
                     break;
                 case 5:
-                    System.out.println("Introduce una parte del nombre: ");
+                    System.out.print("Introduce una parte del nombre: ");
                     String aprox = sc.nextLine();
                     List<Eetakemon> resultado = milista.searchAprox(aprox);
 

@@ -6,7 +6,7 @@ import java.util.List;
 public class ListaEetakemon {
 
     public List<Eetakemon> listaEetakemon;
-    int id = 0;
+    private int generatedId = 0;
 
     public ListaEetakemon(){
         listaEetakemon = new ArrayList<Eetakemon>();
@@ -14,8 +14,8 @@ public class ListaEetakemon {
 
     //Añadir Eetakemon
     public void addEetakemon (Eetakemon e){
-        e.setId(id);
-        this.id++;
+        e.setId(generatedId);
+        this.generatedId++;
         listaEetakemon.add(e);
     }
 
