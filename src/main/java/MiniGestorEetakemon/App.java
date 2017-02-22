@@ -54,6 +54,8 @@ public class App
                         if (borrar.get(i).getId() == delId)
                         {
                             milista.delEetakemon(i);
+                            System.out.println("Eetakemon eliminado");
+                            break;
                         }
                         else{
                             System.out.println("No hay ningun Eetakemon con ese identificador");
@@ -76,25 +78,28 @@ public class App
                     break;
                 case 4:
                     System.out.println("Introduce el nombre del Eetakemon: ");
-                    String searchedName = sc.nextLine();
-                    Eetakemon searchedList = milista.searchByName(searchedName);
+                    String nombre = sc.nextLine();
+                    List<Eetakemon> searched = milista.searchByName(nombre);
 
-                    if (searchedList == null) {
+                    if (searched.size() == 0) {
                         System.out.println("No hay Eetakemon con ese nombre");
                     } else {
-                        System.out.println("Identificador: " + searchedList.getId());
-                        System.out.println("Nombre: " + searchedList.name);
-                        System.out.println("Nivel: " + searchedList.level);
+                        System.out.println(searched.size() + " Eetakemon encontrados: ");
+                        for (int i = 0; i < searched.size(); i++) {
+                            System.out.println("Nombre: " + searched.get(i).name + " | Nivel: " + searched.get(i).level +
+                                    " | ID: " + searched.get(i).getId());
+                        }
                     }
                     break;
                 case 5:
+                    System.out.println("Introduce una parte del nombre: ");
                     String aprox = sc.nextLine();
                     List<Eetakemon> resultado = milista.searchAprox(aprox);
 
                     if (resultado.size() == 0) {
-                        System.out.println("La lista esta vacía");
+                        System.out.println("No hay resultados");
                     } else {
-                        System.out.println("Hay " + resultado.size() + " Eetakemon: ");
+                        System.out.println(resultado.size() + " Eetakemon encontrados: ");
                         for (int i = 0; i < resultado.size(); i++) {
                             System.out.println("Nombre: " + resultado.get(i).name + " | Nivel: " + resultado.get(i).level +
                                     " | ID: " + resultado.get(i).getId());

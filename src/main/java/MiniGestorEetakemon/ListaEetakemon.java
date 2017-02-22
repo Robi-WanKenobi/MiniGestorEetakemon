@@ -26,15 +26,14 @@ public class ListaEetakemon {
         return listaEetakemon;
     }
 
-    public Eetakemon searchByName(String name){
+    public List<Eetakemon> searchByName(String name) {
 
-        Eetakemon finded = new Eetakemon();
+        List<Eetakemon> finded = new ArrayList<Eetakemon>();
 
         for (int i = 0; i<listaEetakemon.size(); i++)
         {
             if (listaEetakemon.get(i).name.equals(name)){
-                finded = listaEetakemon.get(i);
-                break;
+                finded.add(listaEetakemon.get(i));
             }
         }
         return finded;
