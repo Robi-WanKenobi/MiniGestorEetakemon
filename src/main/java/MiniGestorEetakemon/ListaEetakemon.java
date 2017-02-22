@@ -3,9 +3,6 @@ package MiniGestorEetakemon;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Roberto on 21/02/2017.
- */
 public class ListaEetakemon {
 
     public List<Eetakemon> listaEetakemon;
@@ -38,6 +35,18 @@ public class ListaEetakemon {
             if (listaEetakemon.get(i).name.equals(name)){
                 finded = listaEetakemon.get(i);
                 break;
+            }
+        }
+        return finded;
+    }
+
+    public List<Eetakemon> searchAprox(String aprox) {
+
+        List<Eetakemon> finded = new ArrayList<Eetakemon>();
+
+        for (int i = 0; i < listaEetakemon.size(); i++) {
+            if (listaEetakemon.get(i).name.contains(aprox)) {
+                finded.add(listaEetakemon.get(i));
             }
         }
         return finded;
