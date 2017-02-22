@@ -3,12 +3,12 @@ package MiniGestorEetakemon;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListaEetakemon {
+public class Controlador {
 
     public List<Eetakemon> listaEetakemon;
     private int generatedId = 0;
 
-    public ListaEetakemon(){
+    public Controlador() {
         listaEetakemon = new ArrayList<Eetakemon>();
     }
 

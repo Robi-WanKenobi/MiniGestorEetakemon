@@ -7,8 +7,6 @@ package MiniGestorEetakemon;
 //* id autogenerado
 //* tiene que haber 3 clases (modelo - Eetakemon, controlador - lógica del programa, la lista, vista - ofrecer opciones
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -16,7 +14,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        ListaEetakemon milista = new ListaEetakemon();
+        Controlador miControlador = new Controlador();
 
         Scanner sc = new Scanner(System.in);
         int option = 99;
@@ -40,12 +38,12 @@ public class App
                     nuevo.name = sc.nextLine();
                     System.out.print("Introduce el nivel del Eetakemon: ");
                     nuevo.level = Integer.parseInt(sc.nextLine());
-                    milista.addEetakemon(nuevo);
+                    miControlador.addEetakemon(nuevo);
                     break;
                 case 2:
                     System.out.print("¿Que identificador quieres borrar?");
                     int delId = Integer.parseInt(sc.nextLine());
-                    boolean deleted = milista.delEetakemon(delId);
+                    boolean deleted = miControlador.delEetakemon(delId);
 
                     if (deleted) {
                         System.out.println("Eetakemon eliminado");
@@ -55,7 +53,7 @@ public class App
 
                     break;
                 case 3:
-                    List<Eetakemon> mostrar = milista.getList();
+                    List<Eetakemon> mostrar = miControlador.getList();
 
                     if (mostrar.size() == 0){
                         System.out.println("La lista esta vacía");
@@ -71,7 +69,7 @@ public class App
                 case 4:
                     System.out.print("Introduce el nombre del Eetakemon: ");
                     String nombre = sc.nextLine();
-                    List<Eetakemon> searched = milista.searchByName(nombre);
+                    List<Eetakemon> searched = miControlador.searchByName(nombre);
 
                     if (searched.size() == 0) {
                         System.out.println("No hay Eetakemon con ese nombre");
@@ -86,7 +84,7 @@ public class App
                 case 5:
                     System.out.print("Introduce una parte del nombre: ");
                     String aprox = sc.nextLine();
-                    List<Eetakemon> resultado = milista.searchAprox(aprox);
+                    List<Eetakemon> resultado = miControlador.searchAprox(aprox);
 
                     if (resultado.size() == 0) {
                         System.out.println("No hay resultados");
