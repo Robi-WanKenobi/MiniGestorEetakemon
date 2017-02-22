@@ -45,19 +45,14 @@ public class App
                 case 2:
                     System.out.println("¿Que identificador quieres borrar?");
                     int delId = Integer.parseInt(sc.nextLine());
-                    List<Eetakemon> borrar = milista.getList();
+                    boolean deleted = milista.delEetakemon(delId);
 
-                    for (int i = 0; i < borrar.size(); i++) {
-                        if (borrar.get(i).getId() == delId)
-                        {
-                            milista.delEetakemon(i);
-                            System.out.println("Eetakemon eliminado");
-                            break;
-                        }
-                        else{
-                            System.out.println("No hay ningun Eetakemon con ese identificador");
-                        }
+                    if (deleted) {
+                        System.out.println("Eetakemon eliminado");
+                    } else {
+                        System.out.println("No hay ningún Eetakemon con ese identificador");
                     }
+
                     break;
                 case 3:
                     List<Eetakemon> mostrar = milista.getList();
