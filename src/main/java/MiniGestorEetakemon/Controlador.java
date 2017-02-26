@@ -22,20 +22,13 @@ public class Controlador {
     //Borrar por posición
     public boolean delEetakemon(int id) {
 
-        int size = listaEetakemon.size();
-
         for (int i = 0; i < listaEetakemon.size(); i++) {
             if (listaEetakemon.get(i).getId() == id) {
                 listaEetakemon.remove(i);
+                return true;
             }
         }
-
-        if (listaEetakemon.size() != size) //Se ha borrado algo pq el tamaño se ha visto reducido
-        {
-            return true;
-        } else {
-            return false;
-        }
+        return false;
     }
 
     //Devolver lista
