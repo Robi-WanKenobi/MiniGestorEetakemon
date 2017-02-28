@@ -1,61 +1,53 @@
 package MiniGestorEetakemon;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Controlador {
 
-    public List<Eetakemon> listaEetakemon;
+    public Hashtable<Integer, Eetakemon> hashtableEetakemon;
     private int generatedId = 0;
 
     public Controlador() {
-        listaEetakemon = new ArrayList<Eetakemon>();
+        hashtableEetakemon = new Hashtable<Integer, Eetakemon>();
     }
 
     //Añadir Eetakemon
     public void addEetakemon (Eetakemon e){
         e.setId(generatedId);
+        hashtableEetakemon.put(this.generatedId, e);
         this.generatedId++;
-        listaEetakemon.add(e);
     }
 
-    //Borrar por posición
-    public boolean delEetakemon(int id) {
-
-        for (int i = 0; i < listaEetakemon.size(); i++) {
-            if (listaEetakemon.get(i).getId() == id) {
-                listaEetakemon.remove(i);
-                return true;
-            }
-        }
-        return false;
+    //Borrar por identificador
+    public void delEetakemon(int id) {
+        hashtableEetakemon.remove(id);
     }
 
     //Devolver lista
-    public List<Eetakemon> getList(){
-        return listaEetakemon;
+    public Enumeration<Eetakemon> getList() {
+        return hashtableEetakemon.elements();
     }
 
-    public List<Eetakemon> searchByName(String name) {
+    public Eetakemon searchByName(String name) {
 
-        List<Eetakemon> finded = new ArrayList<Eetakemon>();
+        List<Eetakemon> search = Collections.list(hashtableEetakemon.elements());
 
-        for (int i = 0; i<listaEetakemon.size(); i++)
-        {
-            if (listaEetakemon.get(i).name.equals(name)){
-                finded.add(listaEetakemon.get(i));
+        for (int i = 0; i < search.size(); i++) {
+            if (search.get(i).name.equals(name)) {
+                return search.get(i);
             }
         }
-        return finded;
+        return null;
     }
 
     public List<Eetakemon> searchAprox(String aprox) {
 
-        List<Eetakemon> finded = new ArrayList<Eetakemon>();
+        List<Eetakemon> search = Collections.list(hashtableEetakemon.elements());
+        List<Eetakemon> finded = null;
 
-        for (int i = 0; i < listaEetakemon.size(); i++) {
-            if (listaEetakemon.get(i).name.contains(aprox)) {
-                finded.add(listaEetakemon.get(i));
+        for (int i = 0; i < search.size(); i++) {
+            if (search.get(i).name.contains(aprox)) {
+                finded.add(search.get(i));
             }
         }
         return finded;

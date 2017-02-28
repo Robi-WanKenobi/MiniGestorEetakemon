@@ -7,6 +7,7 @@ package MiniGestorEetakemon;
 //* id autogenerado
 //* tiene que haber 3 clases (modelo - Eetakemon, controlador - lógica del programa, la lista, vista - ofrecer opciones
 
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Scanner;
 
@@ -43,42 +44,24 @@ public class App
                 case 2:
                     System.out.print("¿Que identificador quieres borrar?");
                     int delId = Integer.parseInt(sc.nextLine());
-                    boolean deleted = miControlador.delEetakemon(delId);
-
-                    if (deleted) {
-                        System.out.println("Eetakemon eliminado");
-                    } else {
-                        System.out.println("No hay ningún Eetakemon con ese identificador");
-                    }
-
+                    miControlador.delEetakemon(delId);
                     break;
                 case 3:
-                    List<Eetakemon> mostrar = miControlador.getList();
-
-                    if (mostrar.size() == 0){
-                        System.out.println("La lista esta vacía");
-                    }
-                    else {
-                        System.out.println("Hay " + mostrar.size() + " Eetakemon: ");
-                        for (int i = 0; i < mostrar.size(); i++) {
-                            System.out.println("Nombre: " + mostrar.get(i).name + " | Nivel: " + mostrar.get(i).level +
-                                    " | ID: " + mostrar.get(i).getId());
-                        }
+                    Enumeration<Eetakemon> mostrar = miControlador.getList();
+                    Eetakemon mostrarE;
+                    while (mostrar.hasMoreElements()) {
+                        mostrarE = mostrar.nextElement();
+                        System.out.println("Nombre: " + mostrarE.name + " | Nivel: " + mostrarE.level + " | ID: " + mostrarE.getId());
                     }
                     break;
                 case 4:
                     System.out.print("Introduce el nombre del Eetakemon: ");
                     String nombre = sc.nextLine();
-                    List<Eetakemon> searched = miControlador.searchByName(nombre);
-
-                    if (searched.size() == 0) {
-                        System.out.println("No hay Eetakemon con ese nombre");
+                    Eetakemon finded = miControlador.searchByName(nombre);
+                    if (finded == null) {
+                        System.out.println("No hay resultados");
                     } else {
-                        System.out.println(searched.size() + " Eetakemon encontrados: ");
-                        for (int i = 0; i < searched.size(); i++) {
-                            System.out.println("Nombre: " + searched.get(i).name + " | Nivel: " + searched.get(i).level +
-                                    " | ID: " + searched.get(i).getId());
-                        }
+                        System.out.println("Nombre: " + finded.name + " | Nivel: " + finded.level + " | ID: " + finded.getId());
                     }
                     break;
                 case 5:
