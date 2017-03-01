@@ -43,7 +43,7 @@ public class Controlador {
     public List<Eetakemon> searchAprox(String aprox) {
 
         List<Eetakemon> search = Collections.list(hashtableEetakemon.elements());
-        List<Eetakemon> finded = null;
+        List<Eetakemon> finded = new ArrayList<Eetakemon>();
 
         for (int i = 0; i < search.size(); i++) {
             if (search.get(i).name.contains(aprox)) {

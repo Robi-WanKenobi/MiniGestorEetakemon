@@ -28,8 +28,11 @@ public class App
             System.out.println("4. Buscar Eetakemon");
             System.out.println("5. Buscar Eetakemon por aproximación \n");
             System.out.print("Seleccione una opción indicando el número: ");
-            
-            option = Integer.parseInt(sc.nextLine());
+            try {
+                option = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Introduce un número, por favor");
+            }
 
 
             switch (option) {
@@ -49,9 +52,13 @@ public class App
                 case 3:
                     Enumeration<Eetakemon> mostrar = miControlador.getList();
                     Eetakemon mostrarE;
-                    while (mostrar.hasMoreElements()) {
-                        mostrarE = mostrar.nextElement();
-                        System.out.println("Nombre: " + mostrarE.name + " | Nivel: " + mostrarE.level + " | ID: " + mostrarE.getId());
+                    if (!mostrar.hasMoreElements()) {
+                        System.out.println("No hay Eetakemon para mostrar");
+                    } else {
+                        while (mostrar.hasMoreElements()) {
+                            mostrarE = mostrar.nextElement();
+                            System.out.println("Nombre: " + mostrarE.name + " | Nivel: " + mostrarE.level + " | ID: " + mostrarE.getId());
+                        }
                     }
                     break;
                 case 4:
