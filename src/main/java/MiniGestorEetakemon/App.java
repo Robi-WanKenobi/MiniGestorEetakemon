@@ -42,15 +42,20 @@ public class App
                     nuevo.name = sc.nextLine();
                     System.out.print("Introduce el nivel del Eetakemon: ");
                     nuevo.level = Integer.parseInt(sc.nextLine());
-                    miControlador.addEetakemon(nuevo);
+                    miControlador.add(nuevo);
                     break;
                 case 2:
                     System.out.print("¿Que identificador quieres borrar?");
                     int delId = Integer.parseInt(sc.nextLine());
-                    miControlador.delEetakemon(delId);
+                    boolean deleted = miControlador.delEetakemon(delId);
+
+                    if (deleted) {
+                        System.out.println("Eetakemon eliminado");
+                    } else System.out.println("No hay Eetakemon con ese identificador");
+
                     break;
                 case 3:
-                    Enumeration<Eetakemon> mostrar = miControlador.getList();
+                    Enumeration<Eetakemon> mostrar = miControlador.getListEetakemon();
                     Eetakemon mostrarE;
                     if (!mostrar.hasMoreElements()) {
                         System.out.println("No hay Eetakemon para mostrar");
@@ -64,7 +69,7 @@ public class App
                 case 4:
                     System.out.print("Introduce el nombre del Eetakemon: ");
                     String nombre = sc.nextLine();
-                    Eetakemon finded = miControlador.searchByName(nombre);
+                    Eetakemon finded = miControlador.searchEetakemonByName(nombre);
                     if (finded == null) {
                         System.out.println("No hay resultados");
                     } else {
@@ -74,7 +79,7 @@ public class App
                 case 5:
                     System.out.print("Introduce una parte del nombre: ");
                     String aprox = sc.nextLine();
-                    List<Eetakemon> resultado = miControlador.searchAprox(aprox);
+                    List<Eetakemon> resultado = miControlador.searchEetakemonAprox(aprox);
 
                     if (resultado.size() == 0) {
                         System.out.println("No hay resultados");
